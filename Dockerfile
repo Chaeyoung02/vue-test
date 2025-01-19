@@ -21,11 +21,11 @@ FROM nginx:alpine
 COPY --from=build /app/dist /usr/share/nginx/html
 
 # Nginx 설정 파일 복사 (필요시 설정 파일 추가)
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./config/nginx.conf /etc/nginx/conf.d/default.conf
 
-# Nginx 서버 시작
-CMD ["nginx", "-g", "daemon off;"]
-
-# 80 포트 노출
+# 80번 포트 노출
 EXPOSE 80
+
+# Nginx 실행
+CMD ["nginx", "-g", "daemon off;"]
 
